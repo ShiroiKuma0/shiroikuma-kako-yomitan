@@ -36,17 +36,17 @@
 
     --link-color: var(--accent-color);
     --link-color-hover: var(--accent-color-dark);
-    --separator-color1: #cccccc;
-    --separator-color2: #eeeeee;
-    --outline-item-background-color: rgba(13, 13, 13, 0);
-    --outline-item-background-color-hover: rgba(13, 13, 13, 0.15);
-    --warning-color: #96751c;
-    --warning-color-light: #edc75e;
-    --dim-background-color: rgba(0, 0, 0, 0.5);
-    --content-dimmer-color: rgba(0, 0, 0, 0.1);
-    --advanced-color: #6640be;
-    --advanced-color-lighter: hsl(258, 50%, 75%);
-    --advanced-color-transparent25: rgba(102, 64, 190, 0.5);
+    --separator-color1: #4d4d00;
+    --separator-color2: #333300;
+    --outline-item-background-color: rgba(255, 255, 0, 0);
+    --outline-item-background-color-hover: rgba(255, 255, 0, 0.15);
+    --warning-color: #ffaa00;
+    --warning-color-light: #ffcc55;
+    --dim-background-color: rgba(0, 0, 0, 0.7);
+    --content-dimmer-color: rgba(0, 0, 0, 0.5);
+    --advanced-color: #cccc00;
+    --advanced-color-lighter: #666600;
+    --advanced-color-transparent25: rgba(255, 255, 0, 0.25);
 
     --modal-padding-horizontal: 1em;
     --modal-padding-vertical: 0.625em;
@@ -57,8 +57,8 @@
     --animation-duration: 0s;
 }
 :root[data-theme=dark] {
-    --separator-color1: #333333;
-    --separator-color2: #222222;
+    --separator-color1: #4d4d00;
+    --separator-color2: #333300;
 }
 
 /* Modal */
@@ -480,10 +480,10 @@ select.short-height {
 .settings-item-progress-report {
     display: none;
     font-weight: bold;
-    color: #4169e1;
+    color: #ffff00;
 }
 .settings-item-error-report {
     display: none;
     font-weight: bold;
-    color: #8b0000;
+    color: #ffaa00;
 }

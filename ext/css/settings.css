@@ -60,31 +60,31 @@
 
     --link-color: var(--accent-color);
     --link-color-hover: var(--accent-color-dark);
-    --separator-color1: #cccccc;
-    --separator-color2: #eeeeee;
-    --outline-item-background-color: rgba(13, 13, 13, 0);
-    --outline-item-background-color-hover: rgba(13, 13, 13, 0.15);
-    --warning-color: #96751c;
-    --warning-color-light: #edc75e;
-    --dim-background-color: rgba(0, 0, 0, 0.5);
-    --content-dimmer-color: rgba(0, 0, 0, 0.1);
-    --advanced-color: #6640be;
-    --advanced-color-lighter: hsl(258, 50%, 75%);
-    --advanced-color-transparent50: rgba(102, 64, 190, 0.5);
+    --separator-color1: #4d4d00;
+    --separator-color2: #333300;
+    --outline-item-background-color: rgba(255, 255, 0, 0);
+    --outline-item-background-color-hover: rgba(255, 255, 0, 0.15);
+    --warning-color: #ffaa00;
+    --warning-color-light: #ffcc55;
+    --dim-background-color: rgba(0, 0, 0, 0.7);
+    --content-dimmer-color: rgba(0, 0, 0, 0.5);
+    --advanced-color: #cccc00;
+    --advanced-color-lighter: #666600;
+    --advanced-color-transparent50: rgba(255, 255, 0, 0.5);
 
     --modal-padding-horizontal: 1em;
     --modal-padding-vertical: 0.625em;
     --modal-padding-vertical-half: calc(var(--modal-padding-vertical) * 0.5);
     --modal-button-spacing: 0.625em;
 
-    --scrollbar-thumb-color: #c1c1c1;
-    --scrollbar-track-color: #f1f1f1;
-    --scrollbar-inverse-thumb-color: #444444;
-    --scrollbar-inverse-track-color: #2f2f2f;
+    --scrollbar-thumb-color: #4d4d00;
+    --scrollbar-track-color: #000000;
+    --scrollbar-inverse-thumb-color: #ffff00;
+    --scrollbar-inverse-track-color: #1a1a00;
 
-    --dictionary-import-border-color: #cccccc;
-    --dictionary-import-border-color-hover: #bfd1ff;
-    --dictionary-import-hover-background-color: rgba(28, 116, 233, 0.05);
+    --dictionary-import-border-color: #4d4d00;
+    --dictionary-import-border-color-hover: #ffff00;
+    --dictionary-import-hover-background-color: rgba(255, 255, 0, 0.05);
 
     --custom-css-dim-size: 73.5%;
     --custom-css-dim-fade-length: 3.5%;
@@ -94,17 +94,17 @@
     --animation-duration: 0s;
 }
 :root[data-theme=dark] {
-    --separator-color1: #333333;
-    --separator-color2: #222222;
+    --separator-color1: #4d4d00;
+    --separator-color2: #333300;
 
-    --scrollbar-thumb-color: #444444;
-    --scrollbar-track-color: #2f2f2f;
-    --scrollbar-inverse-thumb-color: #c1c1c1;
-    --scrollbar-inverse-track-color: #f1f1f1;
+    --scrollbar-thumb-color: #4d4d00;
+    --scrollbar-track-color: #000000;
+    --scrollbar-inverse-thumb-color: #ffff00;
+    --scrollbar-inverse-track-color: #1a1a00;
 
-    --dictionary-import-border-color: #333333;
-    --dictionary-import-border-color-hover: #1c74e9;
-    --dictionary-import-hover-background-color: rgba(191, 209, 255, 0.05);
+    --dictionary-import-border-color: #4d4d00;
+    --dictionary-import-border-color-hover: #ffff00;
+    --dictionary-import-hover-background-color: rgba(255, 255, 0, 0.05);
 }
 
 /* Scrollbars */
@@ -548,6 +548,7 @@ a.heading-link-light {
     padding: 0;
     box-sizing: border-box;
     background-color: var(--background-color-light);
+    border: var(--thin-border-size) solid var(--card-border-color);
     box-shadow: var(--shadow-vertical);
     border-radius: var(--settings-group-border-radius);
     overflow-x: hidden;
@@ -735,12 +736,12 @@ select.short-height {
 .settings-item-progress-report {
     display: none;
     font-weight: bold;
-    color: #4169e1;
+    color: #ffff00;
 }
 .settings-item-error-report {
     display: none;
     font-weight: bold;
-    color: #8b0000;
+    color: #ffaa00;
 }
 
 /* Hide progress report until import begins */
@@ -2780,6 +2781,6 @@ button.hotkey-list-item-enabled-button[data-scope-count='0'] {
    DO NOT use this for normal theming */
 @media (prefers-color-scheme: dark) {
     :root:not([data-loaded=true]) {
-        background-color: #1e1e1e;
+        background-color: #000000;
     }
 }

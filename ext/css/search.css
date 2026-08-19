@@ -25,8 +25,8 @@
     --content-width-search: 700;
     --content-width: calc(1em * var(--content-width-search) / var(--font-size-no-units));
 
-    --background-color: #ffffff;
-    --separator-color1: #cccccc;
+    --background-color: #000000;
+    --separator-color1: #4d4d00;
 
     --search-textbox-height: calc(var(--textarea-line-height) + var(--textarea-padding) * 2);
     --search-textbox-min-height: calc(var(--textarea-line-height) + var(--textarea-padding) * 2);
@@ -38,7 +38,7 @@
     --animation-duration: 0s;
 }
 :root[data-theme=dark] {
-    --separator-color1: #333333;
+    --separator-color1: #4d4d00;
 }
 
 /* Common styles */
@@ -240,6 +240,6 @@ h1 {
    DO NOT use this for normal theming */
 @media (prefers-color-scheme: dark) {
     :root:not([data-loaded=true]) {
-        background-color: #1e1e1e;
+        background-color: #000000;
     }
 }
