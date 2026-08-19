@@ -202,10 +202,18 @@ git clone git@github.com:ShiroiKuma0/shiroikuma-kako-yomitan.wiki.git /tmp/skwik
 cp .scratch/wiki/*.md /tmp/skwiki/ && cd /tmp/skwiki && git add -A && git commit && git push
 ```
 
-### Nothing is signed or released yet
+### Where the fork stands
 
-`yomitan@shiroikuma` has never been through AMO — the "First signed" column in the key file still
-reads `pending`. **The ID becomes permanent at the first signing run.**
+`26.7.29.8` is **released and signed**: <https://github.com/ShiroiKuma0/shiroikuma-kako-yomitan/releases/tag/26.7.29.8>,
+one asset, the Mozilla-signed `.xpi`. `yomitan@shiroikuma` is permanent as of **2026-08-19**, recorded
+in the key file's "First signed" column.
+
+Signing is slow here: AMO validates in seconds but its **approval** — which is what produces the
+signature — took about 40 minutes per version, longer than `web-ext` waits even at the raised
+30-minute timeout. When the sign command fails that way the upload is still safe; run
+`node tools/fetch-signed.mjs <version>` afterwards, and `node tools/amo-status.mjs` to see which
+uploads are signed. A timed-out run does **not** bump `BUILD_NUMBER`, so check it before the next
+build: a repeat of a released number is a collision AMO will reject and a package name that lies.
 
 ## HARD RULES
 
