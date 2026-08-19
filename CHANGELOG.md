@@ -5,6 +5,21 @@ for the upstream [Yomitan](https://github.com/yomidevs/yomitan) release it is bu
 no changelog file of its own — its notes live only on GitHub Releases — so this file is entirely ours
 to maintain, newest first.
 
+## 白い熊 Yomitan 26.7.29.9 — unreleased
+
+Nothing in the extension itself has changed since 26.7.29.8; this is packaging and repository
+housekeeping, and the entry gets its date when the release is cut.
+
+- **A build's name now says whether it is signed.** The plain
+  `shiroikuma-kako-yomitan_<version>.xpi` is the signed artefact — the one that gets released and
+  installed anywhere — and an unsigned build is `…_<version>-unsigned.xpi`. Neither can overwrite the
+  other, which is what the suffix is for.
+- **Upstream's tag workflows are switched off.** Pushing a tag woke upstream's CI, which built every
+  target and attached six unsigned zips to the release beside the signed `.xpi`, then failed its
+  publishing steps for want of store credentials this fork does not have. `Create prerelease on tag`
+  and `release` are disabled in the repository's Actions settings rather than deleted from the tree,
+  so a rebase never has to resolve them. The remaining workflows only lint and test.
+
 ## 白い熊 Yomitan 26.7.29.8 — 2026-08-19
 
 The first published release, built on upstream **26.7.29.0** and signed by Mozilla on the unlisted

@@ -10,8 +10,9 @@ A personal fork of [Yomitan](https://github.com/yomidevs/yomitan), the pop-up di
 succeeded Yomichan, carrying its own add-on ID and its own black-and-yellow identity so it installs
 **alongside** an unmodified Yomitan rather than replacing it.
 
-📥 **Latest release: [`26.7.29.8`](https://github.com/ShiroiKuma0/shiroikuma-kako-yomitan/releases/latest)** — a
-Mozilla-signed `.xpi` that installs in any Firefox. [All releases »](https://github.com/ShiroiKuma0/shiroikuma-kako-yomitan/releases)
+📥 **[Latest release](https://github.com/ShiroiKuma0/shiroikuma-kako-yomitan/releases/latest)** — a
+Mozilla-signed `.xpi` that installs in any Firefox, including stock release builds.
+[All releases »](https://github.com/ShiroiKuma0/shiroikuma-kako-yomitan/releases)
 
 </div>
 
@@ -50,6 +51,25 @@ regenerate from that one master with `python3 graphics/make-icons.py`.
 Upstream marks the disabled state with a small grey `off` badge and nothing else, which is easy to
 miss. This fork dims the icon itself to `#666600` while scanning is disabled, so the state is legible
 at a glance. Upstream's badge is left exactly as it was.
+
+### 🎨 Black and yellow, everywhere
+
+Pure `#FFFF00` on `#000000` across every surface: pages, dialogs and the dictionary popup. **Cards
+and dialogs are drawn by a yellow border**, drop-downs wear a **yellow pill** so a control never
+reads as a line of text, text fields carry the same frame in rectangular form, and the popup's frame
+is **rounded**. The repaint lives in upstream's own palette variables rather than an override sheet,
+so a colour upstream adds later shows up as a rebase conflict instead of quietly rendering grey.
+
+Three things keep a colour of their own, because there colour is information: the eleven dictionary
+**tag hues**, the amber of warnings and the pitch-accent downstep marker, and the advanced and debug
+toggles.
+
+### 🖱️ A toolbar button that is a switch
+
+One click toggles text scanning, where upstream opens a quick-actions popup — a menu for a two-state
+switch, and on a phone a full-screen panel for it. **Toolbar button action** in the settings puts
+upstream's popup back for anyone who wants it. No badge is painted over the icon either: the artwork
+already says whether scanning is on, and the status stays in the tooltip.
 
 ### 🔗 Our name and our links throughout
 
