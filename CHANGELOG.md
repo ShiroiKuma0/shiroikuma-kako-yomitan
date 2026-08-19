@@ -5,7 +5,7 @@ for the upstream [Yomitan](https://github.com/yomidevs/yomitan) release it is bu
 no changelog file of its own — its notes live only on GitHub Releases — so this file is entirely ours
 to maintain, newest first.
 
-## 白い熊 Yomitan 26.7.29.5 — 2026-08-19
+## 白い熊 Yomitan 26.7.29.7 — 2026-08-19
 
 The first published release, built on upstream **26.7.29.0** and signed by Mozilla on the unlisted
 channel, so it installs in any Firefox without being listed on AMO. Everything below is what this
@@ -59,6 +59,9 @@ fork adds to stock Yomitan.
 - **Every drop-down wears a yellow pill** — a border rounded to half the control's height, the text
   inset, the arrow inside the frame — so a control reads as a control rather than as a line of text.
   The arrow glyph is yellow with it.
+- **Text, number and password fields and textareas carry the same frame**, rectangular rather than a
+  pill: upstream drew them as a fill with no edge, which on a black page left the value floating in
+  the row with nothing to say it could be typed into.
 - The **dictionary popup** gets the same ground and ink: the frame it wears inside a web page, body
   text, borders, the sidebar and its buttons, scrollbars, notifications, the progress bar.
 - The repaint is done **in upstream's own palette variables**, not stacked as an override sheet, so a
@@ -90,13 +93,17 @@ fork adds to stock Yomitan.
 
 - Version scheme `YY.M.D.(P×100 + N)`, where `P` is upstream's own final component and `N` our build
   number — Firefox and AMO accept only one to four plain dot-separated integers and upstream already
-  uses all four, so the last component carries both counters losslessly. `26.7.29.5` is our fifth
+  uses all four, so the last component carries both counters losslessly. `26.7.29.7` is our seventh
   build on upstream's `26.7.29.0`.
 - `tools/build-fork.mjs` builds the Firefox target, verifies that the built manifest carries our
   version and our add-on ID, drops the `.xpi` in `~/tmp` and bumps the counter; `--sign` produces the
   AMO-signed unlisted build published here.
 - AMO credentials live in a gitignored `amo.properties`, mirroring `keystore.properties` in the
   Android forks, and reach `web-ext` through the environment so they never touch a log.
+- Signing survives a slow approval: `web-ext` uploads quickly but gives AMO's approval only a few
+  minutes by default, and a timeout there spends a version number that AMO will never accept again.
+  The wait is raised to half an hour, and `tools/fetch-signed.mjs` downloads a version that is
+  already uploaded, checking that what comes back really carries Mozilla's signature block.
 - New options are declared in the schema with a default rather than through a version-update step,
   which would collide with upstream's numbering at every sync; the fork's own tooling and working
   directory are excluded from upstream's lint and JSON tests.
