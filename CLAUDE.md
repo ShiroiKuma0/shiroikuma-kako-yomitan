@@ -98,6 +98,9 @@ node tools/build-fork.mjs --sign        # release only: AMO-signed .xpi
 npm run test:fast                       # eslint + tsc + unit tests
 ```
 
+**An unsigned build never leaves the PC** — it is for testing here; only a signed `.xpi` is
+delivered to the phone (global rule: `~/.claude/CLAUDE.md`).
+
 **Iterate unsigned.** 白い熊 火狐 desktop is built with `MOZ_REQUIRE_SIGNING` unset, so it installs
 unsigned builds directly; `about:debugging` → _Load Temporary Add-on_ on `builds/firefox-unpacked/`
 is faster still. Sign only at release: every signing run is an AMO round-trip and burns a version

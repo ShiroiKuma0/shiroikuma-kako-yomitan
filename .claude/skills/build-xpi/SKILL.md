@@ -77,6 +77,10 @@ so the last component carries both counters: `YY.M.D.(P × 100 + N)`, where `N` 
 The `.xpi` goes to `~/tmp/`. 白い熊 火狐 installs it directly on the desktop, and on Android through
 its install-from-file support — this fork does not depend on AMO listing or a custom collection.
 
+**Only a signed `.xpi` is delivered to the phone.** An unsigned build stays on the PC, where 白い熊
+火狐 installs it without a signature; it is never pushed over adb or scp. Iterate unsigned here, sign
+at release, deliver the signed artefact. (Global rule: `~/.claude/CLAUDE.md`.)
+
 ## If the build breaks
 
 - `Node <n> is too old` — the nvm line above was not run in _this_ shell.
