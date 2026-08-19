@@ -14,7 +14,7 @@ jobs:
     if: github.actor == 'djahandarie'
     steps:
       - name: Download workflow artifact
-        uses: dawidd6/action-download-artifact@07ab29fd4a977ae4d2b275087cf67563dfdf0295 # v9
+        uses: dawidd6/action-download-artifact@57aa996fc1713cc1579039614f4645a7f4841fd4 # v23
         with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             workflow: auto-approve.yml
