@@ -17,10 +17,10 @@
  */
 
 :root {
-    --pronunciation-annotation-color: #000000;
+    --pronunciation-annotation-color: #ffff00;
 }
 :root[data-theme=dark] {
-    --pronunciation-annotation-color: #ffffff;
+    --pronunciation-annotation-color: #ffff00;
 }
 
 .pronunciation-downstep-notation {

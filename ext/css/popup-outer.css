@@ -19,9 +19,9 @@
 iframe.yomitan-popup {
     all: initial;
     font-size: 1px;
-    background-color: #ffffff;
-    border: 1em solid #999999;
-    box-shadow: 0 0 10em rgba(0, 0, 0, 0.5);
+    background-color: #000000;
+    border: 1em solid #ffff00;
+    box-shadow: 0 0 10em rgba(255, 255, 0, 0.25);
     position: fixed;
     resize: none;
     visibility: hidden;
@@ -29,11 +29,11 @@ iframe.yomitan-popup {
     box-sizing: border-box;
 }
 iframe.yomitan-popup[data-theme=dark] {
-    background-color: #1e1e1e;
-    border-color: #666666;
+    background-color: #000000;
+    border-color: #ffff00;
 }
 iframe.yomitan-popup[data-outer-theme=dark] {
-    box-shadow: 0 0 10em rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 10em rgba(255, 255, 0, 0.25);
 }
 iframe.yomitan-popup[data-outer-theme=none] {
     box-shadow: none;

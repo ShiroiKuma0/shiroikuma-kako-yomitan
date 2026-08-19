@@ -108,11 +108,11 @@
     --collpasible-kanji-glyph-data-test-offset: 0.2em;
 
     /* Colors */
-    --background-color: #ffffff;
-    --gloss-image-background-color: #eeeeee;
+    --background-color: #000000;
+    --gloss-image-background-color: #1a1a00;
     --link-color: var(--accent-color);
 
-    --text-color: #000000;
+    --text-color: #ffff00;
     --reason-text-color: var(--text-color-light3);
 
     --headword-text-color: var(--text-color);
@@ -133,9 +133,9 @@
 
     --kanji-glyph-table-cell-padding: 0.36em;
 
-    --light-border-color: #eeeeee;
-    --medium-border-color: #dddddd;
-    --dark-border-color: #777777;
+    --light-border-color: #333300;
+    --medium-border-color: #4d4d00;
+    --dark-border-color: #ffff00;
 
     --tag-text-color: #ffffff;
     --tag-border-color: transparent;
@@ -151,43 +151,43 @@
     --tag-search-background-color: #8a8a91;
     --tag-pronunciation-dictionary-background-color: #6640be;
 
-    --sidebar-background-color: #f8f9fa;
+    --sidebar-background-color: #000000;
 
     --sidebar-button-background-color: transparent;
-    --sidebar-button-background-color-hover: #cccccc;
-    --sidebar-button-background-color-active: #aaaaaa;
+    --sidebar-button-background-color-hover: #333300;
+    --sidebar-button-background-color-active: #4d4d00;
     --sidebar-button-danger-background-color: transparent;
-    --sidebar-button-danger-background-color-hover: #dd2222;
-    --sidebar-button-danger-background-color-active: #bb2222;
-    --sidebar-button-icon-color: #333333;
-    --sidebar-button-disabled-icon-color: #888888;
-    --sidebar-button-danger-icon-color: #ffffff;
+    --sidebar-button-danger-background-color-hover: #ffaa00;
+    --sidebar-button-danger-background-color-active: #cc8800;
+    --sidebar-button-icon-color: #ffff00;
+    --sidebar-button-disabled-icon-color: #666600;
+    --sidebar-button-danger-icon-color: #000000;
 
-    --scrollbar-thumb-color: #c1c1c1;
-    --scrollbar-track-color: #f1f1f1;
-    --scrollbar-inverse-thumb-color: #444444;
-    --scrollbar-inverse-track-color: #2f2f2f;
+    --scrollbar-thumb-color: #4d4d00;
+    --scrollbar-track-color: #000000;
+    --scrollbar-inverse-thumb-color: #ffff00;
+    --scrollbar-inverse-track-color: #1a1a00;
 
-    --progress-bar-track-color: #cccccc;
+    --progress-bar-track-color: #333300;
     --progress-bar-indicator-color: var(--accent-color);
     --entry-current-indicator-color: var(--accent-color);
 
-    --notification-text-color: #2f2f2f;
-    --notification-background-color: #f1f1f1;
-    --notification-background-color-light: #e1e1e1;
-    --notification-background-color-lighter: #bbbbbb;
-    --notification-shadow-color: rgba(255, 255, 255, 0.25);
+    --notification-text-color: #ffff00;
+    --notification-background-color: #1a1a00;
+    --notification-background-color-light: #262600;
+    --notification-background-color-lighter: #333300;
+    --notification-shadow-color: rgba(255, 255, 0, 0.25);
 
-    --action-button-hover-color: #dddddd;
-    --action-button-active-color: #c1c1c1;
+    --action-button-hover-color: #333300;
+    --action-button-active-color: #4d4d00;
 }
 :root[data-theme=dark] {
     /* Colors */
-    --background-color: #1e1e1e;
-    --gloss-image-background-color: #2f2f2f;
+    --background-color: #000000;
+    --gloss-image-background-color: #1a1a00;
     --link-color: var(--accent-color);
 
-    --text-color: #d4d4d4;
+    --text-color: #ffff00;
     --reason-text-color: var(--text-color-light3);
 
     --headword-text-color: var(--text-color);
@@ -201,9 +201,9 @@
     --headword-reading-text-color-rare: var(--headword-furigana-text-color-rare);
     --headword-kanji-border-color: var(--dark-border-color);
 
-    --light-border-color: #2f2f2f;
-    --medium-border-color: #3f3f3f;
-    --dark-border-color: #888888;
+    --light-border-color: #333300;
+    --medium-border-color: #4d4d00;
+    --dark-border-color: #ffff00;
 
     --tag-text-color: #f1f1f1;
     --tag-border-color: transparent;
@@ -219,35 +219,35 @@
     --tag-search-background-color: #69696e;
     --tag-pronunciation-dictionary-background-color: #6640be;
 
-    --sidebar-background-color: #282828;
+    --sidebar-background-color: #000000;
 
     --sidebar-button-background-color: transparent;
-    --sidebar-button-background-color-hover: #3a3a3a;
-    --sidebar-button-background-color-active: #5a5a5a;
+    --sidebar-button-background-color-hover: #333300;
+    --sidebar-button-background-color-active: #4d4d00;
     --sidebar-button-danger-background-color: transparent;
-    --sidebar-button-danger-background-color-hover: #dd2222;
-    --sidebar-button-danger-background-color-active: #bb2222;
-    --sidebar-button-icon-color: #cccccc;
-    --sidebar-button-disabled-icon-color: #777777;
-    --sidebar-button-danger-icon-color: #ffffff;
+    --sidebar-button-danger-background-color-hover: #ffaa00;
+    --sidebar-button-danger-background-color-active: #cc8800;
+    --sidebar-button-icon-color: #ffff00;
+    --sidebar-button-disabled-icon-color: #666600;
+    --sidebar-button-danger-icon-color: #000000;
 
-    --scrollbar-thumb-color: #444444;
-    --scrollbar-track-color: #2f2f2f;
-    --scrollbar-inverse-thumb-color: #c1c1c1;
-    --scrollbar-inverse-track-color: #f1f1f1;
+    --scrollbar-thumb-color: #4d4d00;
+    --scrollbar-track-color: #000000;
+    --scrollbar-inverse-thumb-color: #ffff00;
+    --scrollbar-inverse-track-color: #1a1a00;
 
-    --progress-bar-track-color: #3a3a3a;
+    --progress-bar-track-color: #333300;
     --progress-bar-indicator-color: var(--accent-color);
     --entry-current-indicator-color: var(--accent-color);
 
-    --notification-text-color: #ffffff;
-    --notification-background-color: #333333;
-    --notification-background-color-light: #555555;
-    --notification-background-color-lighter: #666666;
-    --notification-shadow-color: rgba(0, 0, 0, 0.5);
+    --notification-text-color: #ffff00;
+    --notification-background-color: #1a1a00;
+    --notification-background-color-light: #262600;
+    --notification-background-color-lighter: #333300;
+    --notification-shadow-color: rgba(255, 255, 0, 0.25);
 
-    --action-button-hover-color: #282828;
-    --action-button-active-color: #444444;
+    --action-button-hover-color: #333300;
+    --action-button-active-color: #4d4d00;
 }
 
 
