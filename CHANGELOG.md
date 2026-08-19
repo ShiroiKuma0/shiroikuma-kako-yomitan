@@ -5,6 +5,36 @@ for the upstream [Yomitan](https://github.com/yomidevs/yomitan) release it is bu
 ships no changelog file of its own — its notes live only on GitHub Releases — so this file is
 entirely ours to maintain, newest first.
 
+## 白い熊 Yomitan 26.7.29.2 — 2026-08-19
+
+The house paint, and a toolbar button that behaves like a switch.
+
+### The pages are black and yellow
+
+- Upstream's grey material theme with its blue accent is repainted into the house palette:
+  pure `#FFFF00` on `#000000`, with the yellow dimmed in tiers where a hierarchy was needed
+  (descriptions, disabled controls, separators) rather than falling back to grey.
+- **Every card carries a yellow border.** Cards are black on a black page, so the border is what
+  draws them; it is `--card-border-color` on `.settings-group`.
+- Repainted in place across the five stylesheets the pages share — `material.css`, `settings.css`,
+  `search.css`, `search-settings.css`, `action-popup.css` — rather than stacked as an override
+  sheet, so a colour upstream adds later surfaces as a rebase conflict instead of rendering grey.
+- Both palettes, `:root` and `:root[data-theme=dark]`, now resolve to the same black and yellow, so
+  the **Theme** setting no longer changes the pages. It still governs the dictionary popup.
+- Amber `#FFAA00` is kept for warnings and errors, and the advanced and debug toggles still borrow
+  their own hues, so states that must be told apart still can be.
+
+### The toolbar button
+
+- **A click toggles text scanning.** Upstream opens a quick-actions popup instead — a menu for a
+  two-state switch, and on a phone a full-screen panel for it. The new **Toolbar button action**
+  setting switches back to that popup for anyone who wants it; the toggle is the default.
+- **Settings** are reached from the button's own right-click menu, and from the existing keyboard
+  shortcut. No WebExtension API reports a long press on the toolbar button on either platform.
+- **No badge is painted over the icon any more** — neither upstream's grey `off` label nor its
+  orange `!` bubble. The icon itself already says whether scanning is on, and the status upstream
+  computes still reaches the user through the button's tooltip.
+
 ## 白い熊 Yomitan 26.7.29.1 — 2026-08-19
 
 The first build of the fork, on upstream **26.7.29.0**. Almost all of it is an identity layer; the

@@ -41,20 +41,23 @@ resources), and `docs/` — upstream's developer documentation, which we do not 
 
 ## Our customizations
 
-| What                    | Value                                                                                                   | Where                                                                                                                                                         |
-| ----------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Add-on ID               | `yomitan@shiroikuma` (dev variant: `yomitan-dev@shiroikuma`)                                            | `dev/data/manifest-variants.json`, firefox / firefox-dev                                                                                                      |
-| Dev `update_url`        | **removed** — it pointed at upstream's `metadata/updates.json`                                          | same file                                                                                                                                                     |
-| Name, tooltip, homepage | 白い熊 Yomitan, our repo                                                                                | same file                                                                                                                                                     |
-| Author                  | 白い熊 in the firefox and safari variants; upstream's `author.email` in the base is never shipped by us | same file                                                                                                                                                     |
-| Icon                    | traced black-yellow, both states, 14 assets                                                             | `ext/images/icon*.png`, from `graphics/icon.svg` via `graphics/make-icons.py`                                                                                 |
-| Inline prose icon       | retraced in the house palette                                                                           | `ext/images/yomitan-icon.svg`                                                                                                                                 |
-| Disabled-state icon     | `_setActionIcon`, called from `_updateBadge`                                                            | `ext/js/background/backend.js`                                                                                                                                |
-| Product name in the UI  | 白い熊 Yomitan                                                                                          | every `ext/*.html`, plus a handful of strings in `ext/js/**`                                                                                                  |
-| Every user-facing link  | our repo / wiki / issues / privacy policy                                                               | `ext/info.html`, `ext/support.html`, `ext/settings.html`, `ext/welcome.html`, `ext/quick-start-guide.html`, `ext/templates-modals.html`, `ext/js/core/log.js` |
-| Version and base tag    | `UPSTREAM_BASE`, `BUILD_NUMBER`                                                                         | `fork.properties`                                                                                                                                             |
-| Build and signing       | `node tools/build-fork.mjs [--sign]`                                                                    | `tools/build-fork.mjs`                                                                                                                                        |
-| Credentials             | AMO API key pair                                                                                        | `amo.properties` (**gitignored**)                                                                                                                             |
+| What                     | Value                                                                                                   | Where                                                                                                                                                                                           |
+| ------------------------ | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Add-on ID                | `yomitan@shiroikuma` (dev variant: `yomitan-dev@shiroikuma`)                                            | `dev/data/manifest-variants.json`, firefox / firefox-dev                                                                                                                                        |
+| Dev `update_url`         | **removed** — it pointed at upstream's `metadata/updates.json`                                          | same file                                                                                                                                                                                       |
+| Name, tooltip, homepage  | 白い熊 Yomitan, our repo                                                                                | same file                                                                                                                                                                                       |
+| Author                   | 白い熊 in the firefox and safari variants; upstream's `author.email` in the base is never shipped by us | same file                                                                                                                                                                                       |
+| Icon                     | traced black-yellow, both states, 14 assets                                                             | `ext/images/icon*.png`, from `graphics/icon.svg` via `graphics/make-icons.py`                                                                                                                   |
+| Inline prose icon        | retraced in the house palette                                                                           | `ext/images/yomitan-icon.svg`                                                                                                                                                                   |
+| Disabled-state icon      | `_setActionIcon`, called from `_updateBadge`                                                            | `ext/js/background/backend.js`                                                                                                                                                                  |
+| No badge over the icon   | `_updateBadge` clears the badge text; the status stays in the tooltip                                   | same file                                                                                                                                                                                       |
+| Toolbar button as switch | click toggles scanning; `general.actionButtonMode` switches back to upstream's popup                    | `_updateActionButtonMode`, `_onActionClicked`, `_setupActionContextMenu` in the same file; the option in `ext/data/schemas/options-schema.json`, `types/ext/settings.d.ts`, `ext/settings.html` |
+| Black-and-yellow paint   | palettes repainted in place, `.settings-group` gains a yellow border                                    | `ext/css/material.css`, `settings.css`, `search.css`, `search-settings.css`, `action-popup.css`                                                                                                 |
+| Product name in the UI   | 白い熊 Yomitan                                                                                          | every `ext/*.html`, plus a handful of strings in `ext/js/**`                                                                                                                                    |
+| Every user-facing link   | our repo / wiki / issues / privacy policy                                                               | `ext/info.html`, `ext/support.html`, `ext/settings.html`, `ext/welcome.html`, `ext/quick-start-guide.html`, `ext/templates-modals.html`, `ext/js/core/log.js`                                   |
+| Version and base tag     | `UPSTREAM_BASE`, `BUILD_NUMBER`                                                                         | `fork.properties`                                                                                                                                                                               |
+| Build and signing        | `node tools/build-fork.mjs [--sign]`                                                                    | `tools/build-fork.mjs`                                                                                                                                                                          |
+| Credentials              | AMO API key pair                                                                                        | `amo.properties` (**gitignored**)                                                                                                                                                               |
 
 `ext/manifest.json` is **generated** by upstream's build from `dev/data/manifest-variants.json` and is
 gitignored — never edit it, and never expect it to hold our identity.
@@ -130,6 +133,20 @@ fork stays recognisably the same extension without anything being redrawn.
 
 An outline-only disabled variant was measured and rejected: a glyph bar is 2 px tall at toolbar size
 and a hollow bar needs three pixels, so any stroke thin enough to leave a hole antialiases into mud.
+
+## The paint
+
+The pages are repainted in place — upstream's palette variables carry house values rather than an
+override sheet being stacked on top, so a colour upstream adds later shows up as a rebase conflict
+instead of silently rendering grey. `:root` and `:root[data-theme=dark]` resolve to the same black
+and yellow, which means **the Theme setting no longer affects the pages**; it still governs the
+dictionary popup, whose own palette in `ext/css/display.css` is deliberately **not** repainted —
+its colours are semantic (tag categories, popular and rare headwords, pitch-accent graphs) and
+collapsing them into one hue would delete information. That remains an open question for 白い熊.
+
+New options are declared in `ext/data/schemas/options-schema.json` **with a default and no version
+step**: `OptionsUtil.update()` ends in `getValidValueOrDefault`, which backfills anything missing,
+whereas a `_updateVersionNN` of ours would collide with upstream's next one at every sync.
 
 ## Changelog
 
