@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  白い熊 Yomitan — the fork's icon master.
+
+  Nothing here is freehand. Both shapes are lifted verbatim from upstream's own vector
+  master, `resources/icons.svg`, layer "Yomitan" (id=layer22): its "Background" rounded
+  tile (rect3857) and its "Characters" path (path3859) — the katakana ヨミ. Only the two
+  fills change, into the house palette of pure yellow on black, the treatment
+  `shiroikuma-kuchusen` gives its launcher icon.
+
+  The palette below is rewritten per state by graphics/make-icons.py, which renders this
+  into every size in ext/images/. Editing the colours here changes only the enabled state
+  as it appears in a browser or an editor; the shipped PNGs come from the script.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <style id="palette">
+    .tile { fill: #000000; }
+    .ink  { fill: #FFFF00; }
+  </style>
+  <rect class="tile" x="0" y="0" width="16" height="16" rx="1.625" ry="1.625"/>
+  <path class="ink"
+    d="M 2,2 V 4 H 5 V 7 H 2 v 2 h 3 v 3 H 2 v 2 H 7 V 2 Z m 7,0 v 2 h 5 V 2 Z m 0,5 v 2 h 5 V 7 Z m 0,5 v 2 h 5 v -2 z"/>
+</svg>
