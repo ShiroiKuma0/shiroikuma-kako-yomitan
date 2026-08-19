@@ -14,3 +14,8 @@ dictionaries/
 ext/manifest.json
 
 ext/lib/*
+
+# shiroikuma fork
+amo.properties
+web-ext-artifacts/
+.scratch/
