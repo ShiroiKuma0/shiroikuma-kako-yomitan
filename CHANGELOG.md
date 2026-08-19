@@ -5,6 +5,18 @@ for the upstream [Yomitan](https://github.com/yomidevs/yomitan) release it is bu
 ships no changelog file of its own — its notes live only on GitHub Releases — so this file is
 entirely ours to maintain, newest first.
 
+## 白い熊 Yomitan 26.7.29.3 — 2026-08-19
+
+The dictionary popup joins the paint.
+
+- The popup's chrome is black and yellow throughout: the frame it wears inside a web page, body
+  text, borders, the sidebar and its buttons, scrollbars, notifications and the progress bar.
+- **The dictionary tags keep their own colours.** Those eleven hues are what separate a name tag
+  from a frequency tag from an archaism at a glance; collapsing them into one yellow would delete
+  information the dictionary is giving you.
+- The pitch-accent graph draws in yellow — the stock black ink would have vanished on a black
+  popup — while its downstep marker keeps the danger hue, now amber.
+
 ## 白い熊 Yomitan 26.7.29.2 — 2026-08-19
 
 The house paint, and a toolbar button that behaves like a switch.

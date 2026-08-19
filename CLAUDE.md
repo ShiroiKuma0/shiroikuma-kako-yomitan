@@ -140,9 +140,14 @@ The pages are repainted in place — upstream's palette variables carry house va
 override sheet being stacked on top, so a colour upstream adds later shows up as a rebase conflict
 instead of silently rendering grey. `:root` and `:root[data-theme=dark]` resolve to the same black
 and yellow, which means **the Theme setting no longer affects the pages**; it still governs the
-dictionary popup, whose own palette in `ext/css/display.css` is deliberately **not** repainted —
-its colours are semantic (tag categories, popular and rare headwords, pitch-accent graphs) and
-collapsing them into one hue would delete information. That remains an open question for 白い熊.
+dictionary popup, which is painted from `ext/css/display.css` and keeps its own `data-theme`.
+
+The popup's **chrome** is repainted — frame, text, borders, sidebar, scrollbars, notifications —
+but its **tag palette is not**, and must not be: those eleven hues are the only thing separating a
+name tag from a frequency tag from an archaism, and the pitch-accent downstep marker likewise keeps
+the danger hue. `ext/css/popup-outer.css` styles the iframe that lands **inside arbitrary web
+pages**, so its colours stay literal rather than becoming custom properties that could collide with
+the page's own.
 
 New options are declared in `ext/data/schemas/options-schema.json` **with a default and no version
 step**: `OptionsUtil.update()` ends in `getValidValueOrDefault`, which backfills anything missing,
