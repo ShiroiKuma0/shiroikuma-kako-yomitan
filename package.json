@@ -82,7 +82,7 @@
         "@vitest/eslint-plugin": "^1.1.21",
         "ajv": "^8.17.1",
         "css": "^3.0.0",
-        "dotenv": "^16.4.7",
+        "dotenv": "^17.4.2",
         "esbuild": "^0.25.1",
         "eslint": "^9.17.0",
         "eslint-plugin-eslint-comments": "^3.2.0",
