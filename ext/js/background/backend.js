@@ -1980,6 +1980,7 @@ export class Backend {
         let text = '';
         let color = null;
         let status = null;
+        let enabled = true;
 
         if (this._logErrorLevel !== null) {
             switch (this._logErrorLevel) {
@@ -2010,6 +2011,7 @@ export class Backend {
                 text = 'off';
                 color = '#555555';
                 status = 'Disabled';
+                enabled = false;
             } else if (!this._hasRequiredPermissionsForSettings(options)) {
                 text = '!';
                 color = '#f0ad4e';
@@ -2020,6 +2022,8 @@ export class Backend {
                 status = 'No dictionaries installed';
             }
         }
+
+        this._setActionIcon(enabled);
 
         if (color !== null && typeof chrome.action.setBadgeBackgroundColor === 'function') {
             void chrome.action.setBadgeBackgroundColor({color});
@@ -2033,6 +2037,25 @@ export class Backend {
             }
             void chrome.action.setTitle({title});
         }
+    }
+
+    /**
+     * Swaps the toolbar icon between the enabled and the dimmed disabled artwork.
+     *
+     * Upstream marks the disabled state with a grey "off" badge alone, which is easy to miss
+     * on a busy toolbar. This fork dims the icon itself as well; the badge is left exactly as
+     * upstream sets it, so nothing about the other states changes.
+     * @param {boolean} enabled
+     */
+    _setActionIcon(enabled) {
+        if (typeof chrome.action.setIcon !== 'function') { return; }
+        const suffix = enabled ? '' : '-off';
+        /** @type {{[size: string]: string}} */
+        const path = {};
+        for (const size of [16, 19, 32, 38, 48, 64, 128]) {
+            path[`${size}`] = `images/icon${suffix}${size}.png`;
+        }
+        void chrome.action.setIcon({path});
     }
 
     /**
