@@ -838,6 +838,7 @@ select.short-height {
     width: var(--modal-width);
     height: var(--modal-height);
     background-color: var(--background-color-light);
+    border: var(--thin-border-size) solid var(--card-border-color);
     flex: 0 1 auto;
     border-radius: 0.5em;
     transform: translate(0, 0);
