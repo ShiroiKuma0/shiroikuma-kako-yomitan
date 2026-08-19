@@ -98,6 +98,7 @@ function normalizePathDirectorySeparators(value) {
 
 describe.concurrent('JSON validation', () => {
     const ignoreDirectories = new Set([
+        '.scratch',
         'builds',
         'dictionaries',
         'node_modules',
