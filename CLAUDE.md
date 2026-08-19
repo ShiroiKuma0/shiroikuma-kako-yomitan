@@ -149,6 +149,11 @@ the danger hue. `ext/css/popup-outer.css` styles the iframe that lands **inside 
 pages**, so its colours stay literal rather than becoming custom properties that could collide with
 the page's own.
 
+Icons in `ext/images/` are painted by CSS through a **mask**, so they take the palette without being
+edited. Exactly two are drawn directly as background images and carry their own `fill`:
+`material-down-arrow.svg` (the drop-down arrow) and `up-arrow.svg` (the sidebar's scroll-to-top).
+If a new icon looks grey, check which of the two mechanisms draws it before editing the file.
+
 New options are declared in `ext/data/schemas/options-schema.json` **with a default and no version
 step**: `OptionsUtil.update()` ends in `getValidValueOrDefault`, which backfills anything missing,
 whereas a `_updateVersionNN` of ours would collide with upstream's next one at every sync.

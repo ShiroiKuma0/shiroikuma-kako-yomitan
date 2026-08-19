@@ -5,6 +5,15 @@ for the upstream [Yomitan](https://github.com/yomidevs/yomitan) release it is bu
 ships no changelog file of its own — its notes live only on GitHub Releases — so this file is
 entirely ours to maintain, newest first.
 
+## 白い熊 Yomitan 26.7.29.4 — 2026-08-19
+
+- **Every drop-down wears a yellow pill.** On a black page they had been a line of text over a
+  barely darker fill, with nothing to say they could be opened; now each one carries a yellow
+  border rounded to half its height, the text inset and the arrow inside the frame. The profile
+  drop-down in the toolbar popup matches.
+- The drop-down arrow itself is yellow. Nearly every icon in the extension is painted through a CSS
+  mask and already took the palette; two are drawn directly and carried their own grey fill.
+
 ## 白い熊 Yomitan 26.7.29.3 — 2026-08-19
 
 The dictionary popup joins the paint.
