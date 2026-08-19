@@ -5,8 +5,10 @@
  *   node tools/build-fork.mjs            unsigned build, for iterating
  *   node tools/build-fork.mjs --sign     upload to AMO and fetch the signed .xpi (release only)
  *
- * Either way the package lands in ~/tmp as `shiroikuma-kako-yomitan_<version>.xpi`, and
- * BUILD_NUMBER in fork.properties is bumped afterwards so the next build gets a fresh version.
+ * The package lands in ~/tmp. A signed build is named `shiroikuma-kako-yomitan_<version>.xpi`
+ * and an unsigned one `shiroikuma-kako-yomitan_<version>-unsigned.xpi`, so the plain name always
+ * means "signed, installable anywhere" and neither can overwrite the other. BUILD_NUMBER in
+ * fork.properties is bumped afterwards so the next build gets a fresh version.
  *
  * Do NOT sign while iterating: 白い熊 火狐 is built with MOZ_REQUIRE_SIGNING unset and installs
  * unsigned builds directly, whereas every signing run is an AMO round-trip and burns a version
@@ -115,7 +117,7 @@ if (SIGN) {
 if (!packaged) { die(`web-ext produced nothing in ${ARTIFACTS}`); }
 
 fs.mkdirSync(OUT_DIR, {recursive: true});
-const out = path.join(OUT_DIR, `shiroikuma-kako-yomitan_${version}${SIGN ? '-signed' : ''}.xpi`);
+const out = path.join(OUT_DIR, `shiroikuma-kako-yomitan_${version}${SIGN ? '' : '-unsigned'}.xpi`);
 fs.copyFileSync(path.join(ARTIFACTS, packaged), out);
 
 fs.writeFileSync(PROPS, props.replace(/^BUILD_NUMBER\s*=\s*\d+\s*$/m, `BUILD_NUMBER=${build + 1}`));

@@ -82,7 +82,9 @@ upstream 26.7.29.2 + our build 1  ->  26.7.29.201
   a `$YOMITAN_VERSION` placeholder), so there is nothing in the tree to read it from.
 - `BUILD_NUMBER` is bumped by every build and **reset to 1** by `/upstream-new-version`.
 - The same string is the manifest version, the git tag, the release title and the `.xpi` filename, so
-  they can never disagree. Output: `~/tmp/shiroikuma-kako-yomitan_<version>.xpi`.
+  they can never disagree. Output: `~/tmp/shiroikuma-kako-yomitan_<version>.xpi` when **signed**,
+  `…_<version>-unsigned.xpi` when not — the plain name means signed and installable anywhere, and
+  the two builds of one version can never overwrite each other.
 
 ## Building
 

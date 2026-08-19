@@ -5,7 +5,10 @@ description: Build 白い熊 Yomitan (the Firefox add-on) into a .xpi in ~/tmp �
 
 # Build 白い熊 Yomitan
 
-Produces `~/tmp/shiroikuma-kako-yomitan_<version>.xpi`. Read `CLAUDE.md` for the fork model and the
+Produces a package in `~/tmp/`. **The name says whether it is signed**: a signed build is
+`shiroikuma-kako-yomitan_<version>.xpi`, an unsigned one
+`shiroikuma-kako-yomitan_<version>-unsigned.xpi`. The plain name therefore always means
+"signed, installs anywhere", and the two can never overwrite each other. Read `CLAUDE.md` for the fork model and the
 versioning rules; this skill is the mechanics.
 
 > **`~/git` is outside the sandbox's write allowlist** — every command here needs
@@ -33,7 +36,8 @@ node tools/build-fork.mjs
 That runs upstream's `dev/bin/build.js --target firefox` with our computed version, unpacks the
 resulting zip into `builds/firefox-unpacked/`, checks the built manifest really carries our version
 and our add-on ID, packages it with `web-ext build`, copies the result to
-`~/tmp/shiroikuma-kako-yomitan_<version>.xpi`, and **bumps `BUILD_NUMBER`** in `fork.properties`.
+`~/tmp/shiroikuma-kako-yomitan_<version>-unsigned.xpi`, and **bumps `BUILD_NUMBER`** in
+`fork.properties`.
 
 **Do not sign while iterating.** 白い熊 火狐 desktop is built with `MOZ_REQUIRE_SIGNING` unset and
 installs unsigned builds directly; loading `builds/firefox-unpacked/` through `about:debugging` is
@@ -57,6 +61,9 @@ including stock release builds, without being published or reviewed on AMO.
 - Our add-on ID `yomitan@shiroikuma` is recorded in that file's "Extension IDs we own" table.
 - **AMO rejects a version it has already seen**, so never re-sign the same number. The counter bump is
   automatic; just never reset it by hand outside `/upstream-new-version`.
+
+The signed build lands as `~/tmp/shiroikuma-kako-yomitan_<version>.xpi` — no suffix, because
+only a signed artefact ever carries the plain name.
 
 Then hand off to `/publish-version`: tag `<version>` (no leading `v`), attach the signed `.xpi`,
 refresh the README, and merge the changelog.
