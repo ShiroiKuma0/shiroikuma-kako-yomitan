@@ -131,6 +131,7 @@
     /* Cards are black on black, so their yellow border is what draws them. */
     --card-border-color: #ffff00;
     --select-border-color: #ffff00;
+    --input-border-color: #ffff00;
 }
 :root[data-theme=dark] {
     --text-color: #ffff00;
@@ -744,7 +745,7 @@ input[type=password] {
     color: var(--text-color);
     font-size: var(--input-font-size);
     background-color: var(--input-background-color);
-    border: none;
+    border: var(--thin-border-size) solid var(--input-border-color);
     border-radius: var(--input-border-radius);
     box-sizing: border-box;
     padding: 0 0.5em;
@@ -772,7 +773,7 @@ textarea {
     background-color: var(--input-background-color);
     border-radius: var(--input-border-radius);
     line-height: var(--textarea-line-height);
-    border: var(--thin-border-size) solid var(--input-background-color);
+    border: var(--thin-border-size) solid var(--input-border-color);
 }
 select:invalid,
 textarea:invalid,
