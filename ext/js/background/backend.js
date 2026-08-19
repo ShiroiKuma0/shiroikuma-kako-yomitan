@@ -2025,6 +2025,12 @@ export class Backend {
 
         this._setActionIcon(enabled);
 
+        // The icon carries the state, so no badge is painted over it: upstream's grey "off"
+        // label and its orange "!" bubble both sit on top of the artwork. The status still
+        // reaches the user through the button's tooltip, set below.
+        text = '';
+        color = null;
+
         if (color !== null && typeof chrome.action.setBadgeBackgroundColor === 'function') {
             void chrome.action.setBadgeBackgroundColor({color});
         }
