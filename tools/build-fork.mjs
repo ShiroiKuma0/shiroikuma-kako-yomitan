@@ -93,6 +93,11 @@ if (SIGN) {
     // process listing.
     run('web-ext', [
         'sign', '--channel=unlisted', `--source-dir=${STAGE}`, `--artifacts-dir=${ARTIFACTS}`,
+        // AMO approves an unlisted upload in its own time and web-ext gives up after a few
+        // minutes by default — at which point the version number is spent even though the
+        // upload succeeded. Wait half an hour instead; tools/fetch-signed.mjs picks up the
+        // pieces if even that is not enough.
+        '--approval-timeout=1800000',
     ], {
         env: {
             ...process.env,
