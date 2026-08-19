@@ -22,6 +22,9 @@ iframe.yomitan-popup {
     background-color: #000000;
     border: 1em solid #ffff00;
     box-shadow: 0 0 10em rgba(255, 255, 0, 0.25);
+    /* In em, so the corner scales with the popup rather than tightening as it grows. The
+       iframe's own border-box clips the document inside it, so the content rounds too. */
+    border-radius: 8em;
     position: fixed;
     resize: none;
     visibility: hidden;
@@ -41,6 +44,7 @@ iframe.yomitan-popup[data-outer-theme=none] {
 iframe.yomitan-popup[data-popup-display-mode=full-width] {
     border-left: none;
     border-right: none;
+    border-radius: 0;
 }
 iframe.yomitan-popup[data-popup-display-mode=full-width][data-below=true] {
     border-bottom: none;
