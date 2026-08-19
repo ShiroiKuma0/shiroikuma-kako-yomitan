@@ -163,6 +163,21 @@ New options are declared in `ext/data/schemas/options-schema.json` **with a defa
 step**: `OptionsUtil.update()` ends in `getValidValueOrDefault`, which backfills anything missing,
 whereas a `_updateVersionNN` of ours would collide with upstream's next one at every sync.
 
+## Upstream's CI runs in this fork
+
+The workflows in `.github/workflows/` are upstream's, inherited whole, and they act on our pushes.
+Two of them fire on a tag and were **disabled in the repository's Actions settings** (not deleted, so
+a rebase never conflicts over them):
+
+| Workflow                   | Trigger  | Why it is off                                                                                     |
+| -------------------------- | -------- | ------------------------------------------------------------------------------------------------- |
+| `Create prerelease on tag` | tag push | it built every target and attached six unsigned zips to our release beside the signed `.xpi`      |
+| `release`                  | release  | its publishing steps want Chrome/Edge/AMO store credentials this fork does not have, so it failed |
+
+Re-enable with `gh workflow enable "<name>" --repo ShiroiKuma0/shiroikuma-kako-yomitan` if a reason
+ever appears. The remaining workflows only lint and test, which is harmless; the release artefact is
+produced by `tools/build-fork.mjs`, never by CI.
+
 ## Changelog
 
 Upstream ships **no `CHANGELOG.md`** — its release notes live only on GitHub Releases
