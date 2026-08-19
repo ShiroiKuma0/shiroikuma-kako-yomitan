@@ -276,7 +276,9 @@ select.profile-select {
     width: 7em;
     height: 100%;
     box-sizing: border-box;
-    border: 0;
+    border: 1px solid #ffff00;
+    border-radius: 1em;
+    padding: 0 0.5em;
     margin: 0;
     cursor: pointer;
     font-size: var(--font-size);

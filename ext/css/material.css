@@ -42,6 +42,8 @@
     --input-width-large: calc(200em / (var(--font-size-no-units) * var(--input-font-size-no-units)));
     --input-height: calc(32em / (var(--font-size-no-units) * var(--input-font-size-no-units)));
     --input-border-radius: 0.25em;
+    /* Drop-downs wear a full pill so they read as controls rather than as a line of text. */
+    --select-border-radius: calc(var(--input-height) / 2);
     --textarea-line-height: 1.25em;
     --textarea-padding: 0.5em;
 
@@ -128,6 +130,7 @@
 
     /* Cards are black on black, so their yellow border is what draws them. */
     --card-border-color: #ffff00;
+    --select-border-color: #ffff00;
 }
 :root[data-theme=dark] {
     --text-color: #ffff00;
@@ -710,16 +713,16 @@ select {
     width: var(--input-width-large);
     height: var(--input-height);
     line-height: var(--line-height);
-    border: 0;
-    border-radius: var(--input-border-radius);
+    border: var(--thin-border-size) solid var(--select-border-color);
+    border-radius: var(--select-border-radius);
     box-sizing: border-box;
-    padding: 0 0.5em;
+    padding: 0 1.75em 0 0.85em;
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
     background-image: url(/images/material-down-arrow.svg);
     background-repeat: no-repeat;
-    background-position: right calc(10em / var(--font-size-no-units)) center;
+    background-position: right 0.85em center;
     background-color: var(--input-background-color);
     background-size: var(--material-arrow-dimension2) var(--material-arrow-dimension1);
     cursor: pointer;
