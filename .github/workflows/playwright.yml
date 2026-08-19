@@ -18,7 +18,7 @@ jobs:
       - name: Remove all fonts
         run: rm -rf /usr/share/fonts
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7.0.1
 
       - name: Install CJK fonts
         uses: awalsh128/cache-apt-pkgs-action@acb598e5ddbc6f68a970c5da0688d2f3a9f04d05 # v1.6.0
@@ -44,7 +44,7 @@ jobs:
         run: npx playwright install chromium
 
       - name: Grab latest dictionaries from dictionaries branch
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7.0.1
         with:
           repository: yomidevs/yomitan # so that this works on forks
           ref: dictionaries
@@ -117,7 +117,7 @@ jobs:
     if: ${{ !cancelled() }}
     needs: [playwright-tests]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7.0.1
       - uses: ./.github/actions/setup
 
       ### playwright-report
