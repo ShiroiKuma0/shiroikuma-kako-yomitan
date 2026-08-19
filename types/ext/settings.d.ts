@@ -106,6 +106,7 @@ export type ProfileOptions = {
 
 export type GeneralOptions = {
     enable: boolean;
+    actionButtonMode: ActionButtonMode;
     language: string;
     resultOutputMode: ResultOutputMode;
     debugInfo: boolean;
@@ -393,6 +394,8 @@ export type PreventSecondaryMouseOptions = {
     onSearchPages: boolean;
     onSearchQuery: boolean;
 };
+
+export type ActionButtonMode = 'toggle' | 'popup';
 
 export type ResultOutputMode = 'group' | 'merge' | 'split' | 'term';
 

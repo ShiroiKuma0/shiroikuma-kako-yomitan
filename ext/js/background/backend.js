@@ -249,6 +249,13 @@ export class Backend {
             chrome.commands.onCommand.addListener(onCommand);
         }
 
+        if (isObjectNotArray(chrome.action) && isObjectNotArray(chrome.action.onClicked)) {
+            const onActionClicked = this._onWebExtensionEventWrapper(this._onActionClicked.bind(this));
+            chrome.action.onClicked.addListener(onActionClicked);
+        }
+
+        this._setupActionContextMenu();
+
         if (isObjectNotArray(chrome.tabs) && isObjectNotArray(chrome.tabs.onZoomChange)) {
             const onZoomChange = this._onWebExtensionEventWrapper(this._onZoomChange.bind(this));
             chrome.tabs.onZoomChange.addListener(onZoomChange);
@@ -1555,12 +1562,55 @@ export class Backend {
         }
 
         this._setupContextMenu(options);
+        this._updateActionButtonMode(options);
 
         void this._accessibilityController.update(this._getOptionsFull(false));
 
         this._textParseCache.clear();
 
         this._sendMessageAllTabsIgnoreResponse({action: 'applicationOptionsUpdated', params: {source}});
+    }
+
+    /**
+     * Applies the toolbar button's behaviour. This fork's default is a direct on/off toggle;
+     * `popup` restores upstream's quick-actions popup. Clearing the popup is what makes
+     * chrome.action.onClicked fire at all — with one set, the click never reaches us.
+     * @param {import('settings').ProfileOptions} options
+     */
+    _updateActionButtonMode(options) {
+        if (!isObjectNotArray(chrome.action) || typeof chrome.action.setPopup !== 'function') { return; }
+        const usePopup = options.general.actionButtonMode === 'popup';
+        void chrome.action.setPopup({popup: usePopup ? '/action-popup.html' : ''});
+    }
+
+    /**
+     * @returns {Promise<void>}
+     */
+    async _onActionClicked() {
+        await this._onCommandToggleTextScanning();
+    }
+
+    /**
+     * With the button toggling scanning, the settings page needs another way in. No
+     * WebExtension API reports a long press on the toolbar button, so the entry goes in the
+     * button's own context menu, which is where a browser puts add-on actions anyway.
+     */
+    _setupActionContextMenu() {
+        try {
+            if (!chrome.contextMenus) { return; }
+            chrome.contextMenus.create({
+                id: 'shiroikuma_open_settings',
+                title: 'Settings',
+                contexts: ['action'],
+            }, () => this._checkLastError(chrome.runtime.lastError));
+            chrome.contextMenus.onClicked.addListener((info) => {
+                if (info.menuItemId === 'shiroikuma_open_settings') {
+                    void this._openSettingsPage('existingOrNewTab');
+                }
+            });
+        } catch (e) {
+            log.error(e);
+        }
     }
 
     /**

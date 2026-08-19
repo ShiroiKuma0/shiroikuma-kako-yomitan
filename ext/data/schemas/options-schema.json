@@ -138,6 +138,14 @@
                                         "type": "boolean",
                                         "default": true
                                     },
+                                    "actionButtonMode": {
+                                        "type": "string",
+                                        "enum": [
+                                            "toggle",
+                                            "popup"
+                                        ],
+                                        "default": "toggle"
+                                    },
                                     "language": {
                                         "type": "string",
                                         "default": "ja"
