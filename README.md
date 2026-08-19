@@ -10,7 +10,7 @@ A personal fork of [Yomitan](https://github.com/yomidevs/yomitan), the pop-up di
 succeeded Yomichan, carrying its own add-on ID and its own black-and-yellow identity so it installs
 **alongside** an unmodified Yomitan rather than replacing it.
 
-📥 **Latest release: [`26.7.29.7`](https://github.com/ShiroiKuma0/shiroikuma-kako-yomitan/releases/latest)** — a
+📥 **Latest release: [`26.7.29.8`](https://github.com/ShiroiKuma0/shiroikuma-kako-yomitan/releases/latest)** — a
 Mozilla-signed `.xpi` that installs in any Firefox. [All releases »](https://github.com/ShiroiKuma0/shiroikuma-kako-yomitan/releases)
 
 </div>

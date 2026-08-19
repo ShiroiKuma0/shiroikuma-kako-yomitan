@@ -75,7 +75,7 @@ if (!file || file.status !== 'public') {
 }
 
 const data = Buffer.from(await (await get(file.url)).arrayBuffer());
-const out = path.join(os.homedir(), 'tmp', `shiroikuma-kako-yomitan_${version}.xpi`);
+const out = path.join(os.homedir(), 'tmp', `shiroikuma-kako-yomitan_${version}-signed.xpi`);
 fs.writeFileSync(out, data);
 
 // A signed package carries Mozilla's signature block; an unsigned one does not.

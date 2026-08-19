@@ -115,7 +115,7 @@ if (SIGN) {
 if (!packaged) { die(`web-ext produced nothing in ${ARTIFACTS}`); }
 
 fs.mkdirSync(OUT_DIR, {recursive: true});
-const out = path.join(OUT_DIR, `shiroikuma-kako-yomitan_${version}.xpi`);
+const out = path.join(OUT_DIR, `shiroikuma-kako-yomitan_${version}${SIGN ? '-signed' : ''}.xpi`);
 fs.copyFileSync(path.join(ARTIFACTS, packaged), out);
 
 fs.writeFileSync(PROPS, props.replace(/^BUILD_NUMBER\s*=\s*\d+\s*$/m, `BUILD_NUMBER=${build + 1}`));

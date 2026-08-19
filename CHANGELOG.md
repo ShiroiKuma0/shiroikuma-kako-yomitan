@@ -5,7 +5,7 @@ for the upstream [Yomitan](https://github.com/yomidevs/yomitan) release it is bu
 no changelog file of its own — its notes live only on GitHub Releases — so this file is entirely ours
 to maintain, newest first.
 
-## 白い熊 Yomitan 26.7.29.7 — 2026-08-19
+## 白い熊 Yomitan 26.7.29.8 — 2026-08-19
 
 The first published release, built on upstream **26.7.29.0** and signed by Mozilla on the unlisted
 channel, so it installs in any Firefox without being listed on AMO. Everything below is what this
@@ -63,7 +63,11 @@ fork adds to stock Yomitan.
   pill: upstream drew them as a fill with no edge, which on a black page left the value floating in
   the row with nothing to say it could be typed into.
 - The **dictionary popup** gets the same ground and ink: the frame it wears inside a web page, body
-  text, borders, the sidebar and its buttons, scrollbars, notifications, the progress bar.
+  text, borders, the sidebar and its buttons, scrollbars, notifications, the progress bar — and its
+  frame is **rounded**, at a radius in `em` so the corner scales with the popup instead of tightening
+  as it grows. Full-width mode keeps square corners, since it spans the viewport edge to edge.
+- **Dialogs carry the card's yellow border.** A modal was a black panel on a dimmed black page, so
+  its only edge was the dimming, which on this palette is barely an edge at all.
 - The repaint is done **in upstream's own palette variables**, not stacked as an override sheet, so a
   colour upstream adds later surfaces as a rebase conflict instead of silently rendering grey. Both
   `:root` and `:root[data-theme=dark]` resolve to the same palette, so the **Theme** setting no longer
@@ -93,7 +97,7 @@ fork adds to stock Yomitan.
 
 - Version scheme `YY.M.D.(P×100 + N)`, where `P` is upstream's own final component and `N` our build
   number — Firefox and AMO accept only one to four plain dot-separated integers and upstream already
-  uses all four, so the last component carries both counters losslessly. `26.7.29.7` is our seventh
+  uses all four, so the last component carries both counters losslessly. `26.7.29.8` is our eighth
   build on upstream's `26.7.29.0`.
 - `tools/build-fork.mjs` builds the Firefox target, verifies that the built manifest carries our
   version and our add-on ID, drops the `.xpi` in `~/tmp` and bumps the counter; `--sign` produces the
